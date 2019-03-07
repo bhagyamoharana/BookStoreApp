@@ -1,0 +1,32 @@
+@(quizgivers : List[Customer])
+@import helper._
+
+@layout("All Quizgivers"){
+
+    <h2>All Users</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for(quizgiver <- quizgivers ){
+
+                <tr>
+                    <td>@quizgiver.name</td>
+                    <td>@quizgiver.email</td>
+
+                    <td><button class="btn btn-danger" onclick="sendRetriveRequest(
+                            '@routes.QuizGiverController.retriveMail(quizgiver.email)',
+                            '@routes.QuizGiverController.index()',
+                            '@CSRF.getToken.value'
+                    )">Retrive</button></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}

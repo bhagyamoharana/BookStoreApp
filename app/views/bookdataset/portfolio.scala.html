@@ -1,0 +1,46 @@
+
+@import controllers.Auth.SecuredCustomer
+
+@(books : List[Booksdata],titless:String)
+@import helper._
+@layout(titless) {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/portfolio.css")">
+<script src="@routes.Assets.versioned("js/portfolio.js")" type="text/javascript"></script>
+<ul id="books"></ul>
+<div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('Novel')"> Nature</button>
+        <button class="btn" onclick="filterSelection('Vehicles')"> Cars</button>
+        <button class="btn" onclick="filterSelection('Study')"> People</button>
+    </div>
+
+
+
+<table>
+    @for(book <- books){
+
+
+
+
+    <!-- Portfolio Gallery Grid -->
+
+        <div class="row">
+            <div class="column nature">
+            <img src="/assets/images/books.jpg" alt="Mountains">
+                <div class="content">
+
+
+                    <h4>@book.title_book</h4>
+                    <p>@book.author_name</p>
+                    <p>@book.publisher_name</p>
+                </div>
+
+  </div>
+        </div>
+
+
+    }
+</table>
+
+}
+

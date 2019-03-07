@@ -1,0 +1,25 @@
+@import controllers.Auth.Secured
+
+@(books : List[Booksdata],titless:String)
+@import helper._
+@layout(titless) {
+
+
+<ul id="books"></ul>
+
+
+<table>
+    @for(book <- books){
+    <tr>
+        <td>@book.isbn</td>
+        <td>@book.title_book</td>
+        <td>@book.author_name</td>
+        <td>@book.yearof_p</td>
+        <td>@book.publisher_name</td>
+        <td>@book.im1</td>
+        <td>@book.im2</td>
+        <td>@book.im3</td>
+    </tr>
+    }
+</table>
+}
