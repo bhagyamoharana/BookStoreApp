@@ -28,13 +28,19 @@ public class HomeController extends Controller {
         return ok(index.render());
 
     }
+    public Result amazon() {
+        return redirect("https://www.amazon.co.uk/");
+    }
+    public Result amazonfb(){
+        return redirect("https://www.amazon.co.uk/");
+    }
 
     public Result customerLogin(){
         return ok(customerhomepage.render());
     }
 
-    public Result facebookLogin(){
-        return ok(facebooklogin.render());
+   public Result facebookLogin(){
+       return ok(facebooklogin.render());
     }
 
 

@@ -20,14 +20,32 @@ POST    /auth                       controllers.AuthController.auth()
 
 
 GET     /www.facebook.com           controllers.HomeController.facebookLogin()
+# GET     /log                        controllers.FacebookLoginDataController.getDetails()
 GET     /booksdata                  controllers.BooksDataSetController.index()
 GET     /booksd/:id                  controllers.BooksDataSetController.showOnly16(id : Integer)
 GET     /booksdata/:id              controllers.BooksDataSetController.show(id : String)
 GET     /page                       controllers.BooksDataSetController.showPage()
+GET     /pageall                    controllers.BooksDataSetController.showAllBooksUsingPagination()
 
+GET     /bookspage                  controllers.BooksDataSetController.showLivetable()
+
+
+# book categories
+GET      /cat1                       controllers.BooksDataSetController.showPageAction()
+GET      /cat2                       controllers.BooksDataSetController.showPageComedy()
+GET      /cat3                       controllers.BooksDataSetController.showPageCooking()
+GET      /cat4                       controllers.BooksDataSetController.showPageFamily()
+GET      /cat5                       controllers.BooksDataSetController.showPageHistory()
+GET      /cat6                       controllers.BooksDataSetController.showPageHorror()
+GET      /cat7                       controllers.BooksDataSetController.showPageRomance()
+GET      /cat8                       controllers.BooksDataSetController.showPageScience()
+GET      /cat9                       controllers.BooksDataSetController.showPageSports()
+GET      /cat10                       controllers.BooksDataSetController.showPageTravel()
 
 GET     /admin                      controllers.HomeController.index()
 GET     /books                      controllers.BooksController.index()
+
+
 
 GET     /books/create               controllers.BooksController.create()
 GET     /books/:id                  controllers.BooksController.show(id : Integer)
@@ -35,11 +53,14 @@ GET     /books/edit/:id             controllers.BooksController.edit(id: Integer
 POST    /books/edit/:id             controllers.BooksController.update(id:Integer)
 POST    /books/create               controllers.BooksController.save()
 
-
+GET     /fquiz/questions            controllers.QuestionController.fbquestions()
 GET     /quiz/questions            controllers.QuestionController.questions()
 +nocsrf
 POST    /quiz/saves                controllers.QuestionController.saveAnswers()
-GET    /quiz/thanks               controllers.QuestionController.submitAnswers()
++nocsrf
+POST    /fquiz/save               controllers.QuestionController.saveAnswers()
+GET    /quiz/saves               controllers.HomeController.amazon()
+GET     /fquiz/saves               controllers.HomeController.amazonfb()
 DELETE  /books/:id                  controllers.BooksController.destroy(id: Integer)
 
 # author routes
@@ -50,6 +71,8 @@ DELETE  /authors/:email             controllers.AuthorController.destroy(email: 
 # quiz givers
 GET     /quizgivers                    controllers.QuizGiverController.index()
 DELETE  /quizgivers/:email             controllers.QuizGiverController.retriveMail(email: String)
+
+
 # Tags routes
 
 GET     /tags                       controllers.TagsController.index()
@@ -67,3 +90,10 @@ GET     /cust/logout                controllers.CustomerController.logout()
 GET     /cust/register              controllers.CustomerController.register()
 POST    /cust/register              controllers.CustomerController.save()
 POST    /cust                       controllers.CustomerController.auth()
+
+
+# GET         /reco1           controllers.Reccomender.UserBasedRecommendations.doUserBasedRecomendations()
+
+# GET         /reco2           controllers.Reccomender.ItemRecommend.ItemRecommend()
+
+# GET         /reco3          controllers.Reccomender.ItemBasedRecommend.doItemBasedRecomendations()

@@ -65,9 +65,37 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
+    FB.api(
+      '/me',
+      'GET',
+      {"fields":"name,birthday,hometown"},
+      function(response) {
+          // Insert your code here
+
+    console.log(response);
+          console.log("Inside the user age block")
+               console.log('Successful login for: ' + response.name);
+
+                     console.log('Birthday  for: ' + response.birthday);
+                    console.log('Hometown is'+response.hometown );
+
+                 document.getElementById('status').innerHTML =
+                   'Thanks for logging in, ' + response.name + '!';
+
+                   document.getElementById('dob').innerHTML = 'Your Birthday  is : ' + response.birthday + '!';
+      }
+    );
+   //  FB.API ("/me?fields=user_birthday,location,age", function(response){
+   //  console.log("Inside the user age block")
+   //   console.log('Successful login for: ' + response.name);
+   //         console.log('Age for: ' + response.age);
+   //        document.getElementById('status').innerHTML =
+    //         'Thanks for logging in, ' + response.name + '!';
+   //  });
+  //  FB.api('/me', function(response) {
+   //   console.log('Successful login for: ' + response.name);
+    //   console.log('Email id for: ' + response.email);
+    //  document.getElementById('status').innerHTML =
+    //    'Thanks for logging in, ' + response.name + '!';
+   // });
   }

@@ -23,7 +23,7 @@
                 <td>@book.price</td>
                 <td>@for(tag <- book.tags){
                     @tag.name
-                }</td>
+                    }</td>
                 <td>@book.author.name</td>
                 @if(Secured.CHECK()){
                     <td><a class="btn btn-primary btn-sm" href="@routes.BooksController.edit(book.id)">Edit</a></td>

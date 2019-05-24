@@ -1,4 +1,6 @@
 @import controllers.Auth.Secured
+@import controllers.BooksDataSetController
+
 
 @(title : String,header:Html = Html(""),footer:Html = Html(""))(body: Html)
 <html>
@@ -87,6 +89,9 @@
 
             @body
         </div>
+
+
+
 
         <script src="@routes.Assets.versioned("js/jquery-3.2.1.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("js/bootstrap.min.js")" type="text/javascript"></script>

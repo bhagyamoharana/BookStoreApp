@@ -8,7 +8,7 @@ scalaVersion := "2.12.7"
 
 crossScalaVersions := Seq("2.11.12", "2.12.4")
 
-libraryDependencies += jdbc
+libraryDependencies += javaJdbc
 
 libraryDependencies += guice
 
@@ -50,12 +50,22 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
 
-  "com.restfb" % "restfb" % "1.6.16"
+  "com.restfb" % "restfb" % "2.18.1",
+  "org.apache.mahout" % "mahout-core" % "0.9"
 )
 
+resolvers += "Scala-Tools Maven2 Snapshots Repository" at "http://scala-tools.org/repo-snapshots"
 
+// https://mvnrepository.com/artifact/com.google.guava/guava
+libraryDependencies += "com.google.guava" % "guava" % "15.0"
+libraryDependencies ++= Seq(
+  javaJpa,
+  "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final" // replace by your jpa implementation
+)
 
+PlayKeys.externalizeResources := false
 
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.3.4"
 
 
 

@@ -1,3 +1,8 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -20,12 +25,23 @@
 <fb:login-button scope="email,user_birthday,public_profile" onlogin="checkLoginState();">
 </fb:login-button>
 
-console.log(In facebook page)
+<br>
+<br>
+
+
 
 <div id="status">
     <fb:logout-button scope="public_profile,email" onlogout="facebookLogin();">
     </fb:logout-button>
 </div>
 
+    <br>
+
+<div type="date" id="dob"></div>
+<div>
+<button class="btn btn-success" type="submit">
+<a href="@routes.QuestionController.fbquestions()" class="w3-bar-item w3-button">Fill Questionaire</a><br></button>
+</div>
 </body>
 </html>
+

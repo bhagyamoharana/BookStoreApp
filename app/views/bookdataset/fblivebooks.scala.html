@@ -1,0 +1,232 @@
+
+
+@import controllers.BooksDataSetController
+
+@(books : List[NewLoggersReccomendTable],titless:String)
+
+@import helper._
+
+
+
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700' rel='stylesheet' type='text/css'>
+
+
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+
+/*Green = 32CD32, Red = F31F1F*/
+
+body {
+  background-color: #32CD32;
+  padding: 10px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 60px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+ @@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.content
+{
+    display:inline-block;
+    border:0;
+    width:196px;
+    height:300px;
+    position: relative;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+
+}
+.content:hover
+{
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
+}
+
+
+
+
+</style>
+
+    <style>
+
+
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+
+
+@@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+    <style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+
+
+
+
+
+<body>
+
+
+<div class="sidebar">
+
+
+    <!-- BookProject -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9146906542061363"
+         data-adtest="on"
+         data-ad-slot="6355579380"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+
+
+
+<div class="main">
+
+    <h1>Recommendations for you</h1>
+    <hr>
+
+
+    <!-- Portfolio Gallery Grid -->
+    <div class="row">
+        @for(book <- books){
+        <div class="column">
+            <div class="content">
+
+
+                <div class="style_prevu_kit" style="background-color:#ffffff;">
+                    <img src="@book.coverimage" alt="Mountains" style="width:100%">
+                    <div id ="ratings">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>
+                    <h5><strong><a href="@book.url">Buy Now</a></strong></h5>
+
+                </div>
+
+            </div>
+
+        </div>
+        }
+    </div>
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+

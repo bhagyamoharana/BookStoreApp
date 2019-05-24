@@ -8,6 +8,10 @@ import play.data.validation.Constraints;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 
 @Entity
 @Table(name = "customer_users")
@@ -37,4 +41,6 @@ public class Customer extends Model {
     public static Finder<String,Customer> find = new Finder<>(Customer.class);
    // System.out.println("Inside Customer bean");
   //  Console.log("Inside class");
+
+
 }

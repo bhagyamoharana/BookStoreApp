@@ -46,16 +46,16 @@ create table books_tags (
   constraint pk_books_tags primary key (books_id,tags_id)
 );
 
-create table bookdata (
+create table booksdata (
   isbn                          varchar(255) not null,
-  title_book                    varchar(255),
-  author_name                   varchar(255),
-  yearof_p                      integer,
-  publisher_name                varchar(255),
-  im1                           varchar(255),
-  im2                           varchar(255),
-  im3                           varchar(255),
-  constraint pk_bookdata primary key (isbn)
+  title                         varchar(255),
+  author                        varchar(255),
+  tags                          varchar(255),
+  yearofpublication             integer,
+  publisher                     varchar(255),
+  coverimage                    varchar(255),
+  url                           varchar(255),
+  constraint pk_booksdata primary key (isbn)
 );
 
 create table customer_users (
@@ -79,10 +79,35 @@ create table customer_address (
   constraint pk_customer_address primary key (id)
 );
 
+create table userprofile (
+  user_id                       integer auto_increment not null,
+  age                           integer not null,
+  country_code                  integer not null,
+  constraint pk_userprofile primary key (user_id)
+);
+
+create table livetable2 (
+  bookrating                    integer,
+  age                           integer,
+  country_code                  varchar(255),
+  title                         varchar(255),
+  author                        varchar(255),
+  coverimage                    varchar(255),
+  tags                          varchar(255),
+  url                           varchar(255)
+);
+
 create table questions (
   q_id                          integer auto_increment not null,
   question                      varchar(255),
   constraint pk_questions primary key (q_id)
+);
+
+create table ratings (
+  user_id                       integer auto_increment not null,
+  isbn                          integer not null,
+  bookrating                    integer not null,
+  constraint pk_ratings primary key (user_id)
 );
 
 create table tags (
@@ -136,13 +161,19 @@ drop table if exists books;
 
 drop table if exists books_tags;
 
-drop table if exists bookdata;
+drop table if exists booksdata;
 
 drop table if exists customer_users;
 
 drop table if exists customer_address;
 
+drop table if exists userprofile;
+
+drop table if exists livetable2;
+
 drop table if exists questions;
+
+drop table if exists ratings;
 
 drop table if exists tags;
 

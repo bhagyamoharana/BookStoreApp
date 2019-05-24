@@ -9,13 +9,15 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  * Created by Bhagya.
  */
 
 @Entity
-@Table(name = "bookdata")
+@Table(name = "booksdata")
 public class Booksdata extends Model {
 
     @Id
@@ -24,28 +26,37 @@ public class Booksdata extends Model {
 
     @Constraints.Required
 
-    public String title_book;
+    public String title;
 
 
-    public String author_name;
+    public String author;
 
+    @ManyToOne
+    public String tags;
 
-    public Integer yearof_p;
+    @Column( name="YearOfPublication")
+    public Integer year;
 
     @Constraints.Required
 
-    public String publisher_name;
+    public String publisher;
 
 
-    public String im1;
+    public String coverimage;
 
+    public String url;
 
-    public String im2;
+   /* @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "taste_preferences",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "item_id") })
 
-
-    public String im3;
+*/
 
     public static Finder<String,Booksdata> find = new Finder<>(Booksdata.class);
+
+
 
     //List<Booksdata> nos = Booksdata.find.select("isbn").setDistinct(true).findList();
    // int count = Ebean.find(Booksdata.class.fetch("isbn").findRowCount();

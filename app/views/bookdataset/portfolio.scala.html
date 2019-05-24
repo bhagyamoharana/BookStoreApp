@@ -3,44 +3,337 @@
 
 @(books : List[Booksdata],titless:String)
 @import helper._
-@layout(titless) {
-<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/portfolio.css")">
-<script src="@routes.Assets.versioned("js/portfolio.js")" type="text/javascript"></script>
+@customerlayout(titless) {
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+
+
+
+
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f31f1f;
+  padding: 10px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 60px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after rows */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+ @@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.content
+{
+    display:inline-block;
+    border:0;
+    width:220px;
+    height:450px;
+    position: relative;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+
+}
+.content:hover
+{
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
+}
+
+
+
+
+</style>
+
+    <style>
+
+
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+
+
+@@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+
+
+    <style>
+.checked {
+  color: orange;
+}
+</style>
+
+    <style>
+    .rating {
+    display: inline-block;
+    }
+
+    .star {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    padding: 0 0.15em;
+    cursor: pointer;
+    }
+
+    .star.is-active {
+    color: #F9DC5C;
+    }
+
+    .screen-reader {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    }
+</style>
+
+
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="assets/javascripts/portfolio.js" type="text/javascript"></script>
+</head>
+
+
 <ul id="books"></ul>
 <div id="myBtnContainer">
-        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-        <button class="btn" onclick="filterSelection('Novel')"> Nature</button>
-        <button class="btn" onclick="filterSelection('Vehicles')"> Cars</button>
-        <button class="btn" onclick="filterSelection('Study')"> People</button>
+
+
+
+    </div>
+
+    <div class="sidebar">
+        <h3 class="w3-bar-item">Categories</h3>
+        <a href="@routes.BooksDataSetController.showAllBooksUsingPagination()" class="w3-bar-item w3-button">Show All</a><br>
+        <a href="@routes.BooksDataSetController.showPageAction()" class="w3-bar-item w3-button">Action</a><br>
+        <a href="@routes.BooksDataSetController.showPageComedy()" class="w3-bar-item w3-button">Comedy</a><br>
+        <a href="@routes.BooksDataSetController.showPageCooking()" class="w3-bar-item w3-button">Cooking</a><br>
+        <a href="@routes.BooksDataSetController.showPageFamily()" class="w3-bar-item w3-button">Family</a><br>
+        <a href="@routes.BooksDataSetController.showPageHistory()" class="w3-bar-item w3-button">Historical</a><br>
+        <a href="@routes.BooksDataSetController.showPageHorror()" class="w3-bar-item w3-button">Horror</a><br>
+        <a href="@routes.BooksDataSetController.showPageRomance()" class="w3-bar-item w3-button">Romance</a><br>
+        <a href="@routes.BooksDataSetController.showPageScience()" class="w3-bar-item w3-button">Science</a><br>
+        <a href="@routes.BooksDataSetController.showPageSports()" class="w3-bar-item w3-button">Sports</a><br>
+        <a href="@routes.BooksDataSetController.showPageTravel()" class="w3-bar-item w3-button">Travel</a><br>
     </div>
 
 
-
-<table>
+<div class="row">
     @for(book <- books){
+    <div class="column">
+        <div class="content">
 
 
-
-
-    <!-- Portfolio Gallery Grid -->
-
-        <div class="row">
-            <div class="column nature">
-            <img src="/assets/images/books.jpg" alt="Mountains">
-                <div class="content">
-
-
-                    <h4>@book.title_book</h4>
-                    <p>@book.author_name</p>
-                    <p>@book.publisher_name</p>
+            <div class="style_prevu_kit" style="background-color:#ffffff;">
+                <img src="@book.coverimage" alt="Mountains" style="width:100%">
+                <div id ="ratings">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
                 </div>
+                <h5><strong><a href="@book.url">Buy Now</a></strong></h5>
+            </div>
 
-  </div>
+            <form class="rating" id="product1">
+                <button type="submit" class="star" data-star="1">
+                    &#9733;
+                    <span class="screen-reader">1 Star</span>
+                </button>
+
+                <button type="submit" class="star" data-star="2">
+                    &#9733;
+                    <span class="screen-reader">2 Stars</span>
+                </button>
+
+                <button type="submit" class="star" data-star="3">
+                    &#9733;
+                    <span class="screen-reader">3 Stars</span>
+                </button>
+
+                <button type="submit" class="star" data-star="4">
+                    &#9733;
+                    <span class="screen-reader">4 Stars</span>
+                </button>
+
+                <button type="submit" class="star" data-star="5">
+                    &#9733;
+                    <span class="screen-reader">5 Stars</span>
+                </button>
+            </form>
+
         </div>
 
-
+    </div>
     }
-</table>
+</div>
 
+
+</div>
 }
+
+<script>
+/*
+* Variables
+*/
+const productRating = document.getElementById('product1');
+const stars = productRating.querySelectorAll('.star');
+let rating = 0;
+
+/*
+* Event Listeners
+*/
+window.addEventListener('click', e => {
+  if(!e.target.matches('.star')) return;
+  e.preventDefault();
+
+  const starID = parseInt(e.target.getAttribute('data-star'));
+  const starScreenReaderText = e.target.querySelector('.screen-reader');
+
+  removeClassFromElements('is-active', stars);
+  highlightStars(starID);
+  console.log(starID);
+
+  resetScreenReaderText(stars);
+  starScreenReaderText.textContent = `${starID} Stars Selected`;
+
+  rating = starID; // set rating
+});
+
+// Highlight on hover
+window.addEventListener('mouseover', e => {
+  if(!e.target.matches('.star')) return;
+
+  removeClassFromElements('is-active', stars);
+  const starID = parseInt(e.target.getAttribute('data-star'));
+  highlightStars(starID);
+});
+
+//If a rating has been clicked, snap back to that rating on mouseleave
+productRating.addEventListener('mouseleave', e => {
+  removeClassFromElements('is-active', stars);
+  if (rating === 0) return;
+  highlightStars(rating);
+});
+
+/*
+* Functions
+*/
+
+// Highlight active star and all those upto it
+function highlightStars(starID) {
+  for (let i = 0; i < starID; i++) {
+    stars[i].classList.add('is-active')
+  }
+}
+
+function removeClassFromElements(className, elements) {
+  for(let i = 0; i < elements.length; i++) {
+    elements[i].classList.remove(className)
+  }
+}
+
+function resetScreenReaderText(stars) {
+  for(let i = 0; i < stars.length; i++) {
+    const starID = stars[i].getAttribute('data-star');
+    const text = stars[i].querySelector('.screen-reader');
+    text.textContent = `${starID} Stars`;
+  }
+}
+</script>
+
+
+
+
+
 

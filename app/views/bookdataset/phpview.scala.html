@@ -61,13 +61,14 @@ $query=mysqli_query($conn,"select * from form_table limit                       
                 @for(book <- books){
                 <tr>
                     <td>@book.isbn</td>
-                    <td>@book.title_book</td>
-                    <td>@book.author_name</td>
-                    <td>@book.yearof_p</td>
-                    <td>@book.publisher_name</td>
-                    <td>@book.im1</td>
-                    <td>@book.im2</td>
-                    <td>@book.im3</td>
+                    <td>@book.title</td>
+                    <td>@book.author</td>
+                    <td>@book.year</td>
+                    <td>@book.publisher</td>
+                    <td>@book.coverimage</td>
+                    <td>@book.tags</td>
+
+
                 </tr>
                 }
             </table>
